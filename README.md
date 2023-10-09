@@ -3,7 +3,7 @@
 </p>
 
 <h1>On-premises Active Directory Deployed in the Cloud (Azure)</h1>
-This tutorial outlines the implementation of on-premises Active Directory within Azure Virtual Machines.<br />
+This tutorial will showcase what I've learned about on-premises Active Directory using Azure Virtual Machines.<br />
 
 
 <h2>Environments and Technologies Used</h2>
@@ -20,11 +20,11 @@ This tutorial outlines the implementation of on-premises Active Directory within
 
 <h2>Deployment and Configuration Steps</h2>
 
-1) Make sure your domain controller's IP address is switched from dynamic to static. I'm using an Azure virtual machine so I changed it in the Network Interface Card (NIC) settings.
+1) Make sure your domain controller's IP address is switched from dynamic to static. I'm using an Azure virtual machine so I changed it in the virtual Network Interface Card (NIC) settings.
 
    ![image](https://github.com/jvilleda96/configure-ad/assets/147073936/75071055-625b-4489-bff3-5d51e6061317)
 
-2) Login into your Domain Controller's computer as an administrator and open up the server manager application. Here you can select the "add roles and features" option to begin the process.
+2) Log into your Domain Controller's computer as an administrator and open up the server manager application. Here you can select the "add roles and features" option to begin the process.
 
    ![Add Roles   Features](https://github.com/jvilleda96/configure-ad/assets/147073936/233f6ed6-2519-48bb-ad82-a6bdd14da198)
 
@@ -48,7 +48,7 @@ This tutorial outlines the implementation of on-premises Active Directory within
 
    ![ADUC start menu](https://github.com/jvilleda96/configure-ad/assets/147073936/d7a5b468-b4a2-4469-bd00-174f046ef963)
 
-   Go to your newly created domain and right click for more options, from here you can a new organizational units as shown below. Make two total new units, one named "_EMPLOYEES" and the other "_ADMINS".
+   Go to your newly created domain and right click for more options, from here you can create new organizational units as shown below. Make two new units, one named "_EMPLOYEES" and the other "_ADMINS".
    
    ![New Organi Uni](https://github.com/jvilleda96/configure-ad/assets/147073936/65dcc190-8d1a-4992-a3d8-66ab1990f4d0)
 
@@ -56,7 +56,7 @@ This tutorial outlines the implementation of on-premises Active Directory within
 
    ![NEW ADMIN ADUC](https://github.com/jvilleda96/configure-ad/assets/147073936/b2e1468c-a719-4e35-b934-d28d54bd96c9)
 
-   It will ask you to creat a password for the new admin account, make sure you select the "password never expires" option.
+   It will ask you to create a password for the new admin account, make sure you select the "password never expires" option.
 
    ![ADMINS PW NEVER EXPIRES](https://github.com/jvilleda96/configure-ad/assets/147073936/a800c4be-34a2-4335-968f-d5ff02cbe350)
 
@@ -64,11 +64,11 @@ This tutorial outlines the implementation of on-premises Active Directory within
 
    ![member of admins](https://github.com/jvilleda96/configure-ad/assets/147073936/862f5880-7766-45db-83fa-f815e7053446)
 
-5) Now we add the client computer on the network to our new domain but first we have to make sure they're connect to the Domain Controller's DNS server. I'm using Azure so I will edit this setting the virtual machine's NIC settings.
+5) Now we can add the client computer ini our network to the new domain but first we have to make sure they connect to the Domain Controller's DNS server. I'm using Azure so I will edit this setting in the virtual NIC settings.
 
    ![DNS SERVER CLIENT](https://github.com/jvilleda96/configure-ad/assets/147073936/a349a148-1509-4b3e-a080-6f3395d67a38)
 
-   To confirm you're connected to the DC's DNS server go into the command prompt and type in "ipconfig /all" and make sure the DNS server is the same address as you DC's.
+   To confirm you're connected to the DC's DNS server go into the command prompt and type in "ipconfig /all" and make sure the DNS server is the same address as your DC's private IP address,  in this case it's "10.0.0.4".
 
    ![CLIENT DNS CONFIRMATION](https://github.com/jvilleda96/configure-ad/assets/147073936/12fd2c63-f4ea-4fb3-96a6-8e9240d0513f)
 
@@ -97,4 +97,4 @@ This tutorial outlines the implementation of on-premises Active Directory within
 
     ![confirmed created user login](https://github.com/jvilleda96/configure-ad/assets/147073936/9f0b941e-0ee4-462d-aa34-23d58c8242f9)
 
-Active Directory is now successfully installed in your local network. As an admin you can do a number of things, such as resetting passwords, changing file sharing permissions, etc.   
+Active Directory is now successfully installed in your local network. As an admin you can do a number of things, such as resetting passwords, unlocking acccounts, change file sharing permissions, etc.
